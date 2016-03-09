@@ -1,0 +1,19 @@
+body {
+  background-color: black;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(http://hyperrabbitpowergo.com/wp-content/uploads/2016/01/background2-2.jpg);"></div>
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+
+a {
+  color: #00B7FF;
+}
