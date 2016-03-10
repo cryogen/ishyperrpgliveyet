@@ -1,0 +1,23 @@
+{
+  "name": "hrpg",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Stuart Walsh <stu@ipng.org.uk>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "moment": "^2.12.0"
+  }
+}

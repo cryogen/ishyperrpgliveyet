@@ -1,4 +1,13 @@
 extends layout
 
 block content
-  h1 Not right now
+  .background
+  if live
+    h1 Yes! Go #[a(href='http://twitch.tv/HyperRPG') watch] it! #{name} is on! It started at #{startTime} 
+  else
+    h1 No :(  The next show is #{name}.  It starts: #{startTime}
+      
+  script.
+    var showTime = '#{startTime}';
+    
+  script(src='js/index.js')
