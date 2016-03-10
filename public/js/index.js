@@ -14,6 +14,11 @@ $(document).ready(function() {
 
   var diff = timeOfShow - timeOfNow;
   var duration = moment.duration(timeOfShow.diff(timeOfNow));
+
+  if(diff < 0) {
+    return;
+  }
+
   var interval = 1000;
 
   setInterval(function() {
@@ -29,5 +34,9 @@ $(document).ready(function() {
     $('#hours').text(hours);
     $('#minutes').text(minutes);
     $('#seconds').text(seconds);
+
+    if(hours <= 0 && minutes <= 0 && seconds <= 0) {
+      location.href = '/';
+    }
   }, interval);
 });
