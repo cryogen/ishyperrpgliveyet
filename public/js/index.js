@@ -1,15 +1,33 @@
 'use strict';
 
-$(document).ready(function() {
-  var time = moment(showTime, 'dddd HH:mm');
+function padNumber(number) {
+  if(number.length <= 1) {
+    return '0' + number;
+  }
 
-  var diff = time - moment('dddd HH:mm');
-  var duration = moment.duration(diff * 1000, 'milliseconds');
+  return number;
+}
+
+$(document).ready(function() {
+  var timeOfShow = moment(showTime, 'dddd HH:mm:ss');
+  var timeOfNow = moment(currentTime, 'dddd HH:mm:ss');
+
+  var diff = timeOfShow - timeOfNow;
+  var duration = moment.duration(timeOfShow.diff(timeOfNow));
   var interval = 1000;
 
   setInterval(function() {
     duration = moment.duration(duration - interval, 'milliseconds');
-    //$('.countdown').text(duration.hours() + ':' + duration.minutes() + ':' + duration.seconds())
-    console.info(duration.hours() + ':' + duration.minutes() + ':' + duration.seconds());
+    if(duration.days() > 0) {
+      $('#days').text(duration.days());
+    }
+
+    var hours = padNumber('' + duration.hours());
+    var minutes = padNumber('' + duration.minutes());
+    var seconds = padNumber('' + duration.seconds());
+
+    $('#hours').text(hours);
+    $('#minutes').text(minutes);
+    $('#seconds').text(seconds);
   }, interval);
 });

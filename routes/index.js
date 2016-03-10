@@ -17,8 +17,8 @@ var shows = [
   { day: 2, name: 'Future/Retro', time: getTime('15:00') },
   { day: 2, name: 'Colony News', time: getTime('17:30') },
   { day: 2, name: 'Death From Above', time: getTime('18:00') },
-  //{ day: 3, name: 'Easter Eggs', time: getTime('12:00') },
-  //{ day: 3, name: 'Rabbit Stew', time: getTime('13:00') },
+  { day: 3, name: 'Easter Eggs', time: getTime('12:00') },
+  { day: 3, name: 'Rabbit Stew', time: getTime('13:00') },
   { day: 3, name: 'Watching Paint Dry', time: getTime('15:00') },
   { day: 3, name: 'Corporate News', time: getTime('17:30') },
   { day: 3, name: 'Shadowrun Corporate Sins', time: getTime('18:00') },
@@ -75,7 +75,8 @@ router.get('/', function(req, res, next) {
     title: 'Is HyperRPG Live Yet?',
     live: show.live,
     name: show.show.name,
-    startTime: show.show.time.format('dddd HH:mm')
+    startTime: show.show.time.format('dddd HH:mm:ss'),
+    currentTime: moment().tz('America/Los_angeles').format('dddd HH:mm:ss')
   });
 });
 
