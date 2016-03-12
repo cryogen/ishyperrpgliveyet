@@ -15,6 +15,11 @@ $(document).ready(function() {
   var diff = timeOfShow - timeOfNow;
   var duration = moment.duration(timeOfShow.diff(timeOfNow));
 
+  if(duration.days() < 0) {
+    diff = -diff;
+    duration = moment.duration(timeOfShow.add(1, 'week').diff(timeOfNow));
+  }
+
   if(diff < 0) {
     return;
   }
@@ -24,7 +29,7 @@ $(document).ready(function() {
   setInterval(function() {
     duration = moment.duration(duration - interval, 'milliseconds');
     if(duration.days() > 0) {
-      $('#days').text(duration.days());
+      $('#days').text(duration.days() + ' days');
     }
 
     var hours = padNumber('' + duration.hours());
