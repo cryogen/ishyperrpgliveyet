@@ -22,6 +22,10 @@ $(document).ready(function() {
 
   var localTime = moment().add(duration);
 
+  if(localTime.minutes() !== 0) {
+    localTime.add(1, 'minute');
+  }
+
   $('#localTime').text(localTime.format('dddd HH:mm'));
 
   if(diff < 0) {
@@ -31,7 +35,7 @@ $(document).ready(function() {
         channel: 'hyperrpg',
     };
     var player = new Twitch.Player('player', options);
-    
+
     return;
   }
 
