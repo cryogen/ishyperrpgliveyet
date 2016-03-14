@@ -9,7 +9,7 @@ block content
   -}
 
   if live
-    h1 Yes! :D (probably) #{name} is on! It started at #{startTime}.  Watch it below:
+    h1 Yes! :D (probably) #{name} is on! It started on #{getDateTimeString(startTime)} #{timeZone}.  Watch it below:
     #player
   else
     h1 No :(
