@@ -2,6 +2,7 @@
 
 var express = require('express');
 var moment = require('moment-timezone');
+var http = require('https');
 
 var router = express.Router();
 
@@ -73,12 +74,26 @@ router.get('/', function(req, res, next) {
 
   var show = findShow(time);
 
+  var data = '';
+
+  http.get('https://api.twitch.tv/kraken/streams/hyperrpg', function(res) {
+    res.on('data', function(chunk) {
+      data += chunk;
+    });
+
+    res.on('end', function() {
+//      console.info(data);
+    });
+  });
+
   res.render('index', {
     title: 'Is HyperRPG Live Yet?',
     live: show.live,
     name: show.show.name,
     startTime: show.show.time.format('dddd HH:mm:ss'),
-    currentTime: moment().tz('America/Los_angeles').format('dddd HH:mm:ss')
+    currentTime: moment().tz('America/Los_angeles').format('dddd HH:mm:ss z'),
+    timeZone: moment().tz('America/Los_angeles').format('z'),
+    offset: moment().tz('America/Los_Angeles').utcOffset()
   });
 });
 

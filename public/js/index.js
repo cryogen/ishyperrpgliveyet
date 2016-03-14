@@ -10,7 +10,7 @@ function padNumber(number) {
 
 $(document).ready(function() {
   var timeOfShow = moment(showTime, 'dddd HH:mm:ss');
-  var timeOfNow = moment(currentTime, 'dddd HH:mm:ss');
+  var timeOfNow = moment(currentTime, 'dddd HH:mm:ss z');
 
   var diff = timeOfShow - timeOfNow;
   var duration = moment.duration(timeOfShow.diff(timeOfNow));
@@ -20,7 +20,18 @@ $(document).ready(function() {
     duration = moment.duration(timeOfShow.add(1, 'week').diff(timeOfNow));
   }
 
+  var localTime = moment().add(duration);
+
+  $('#localTime').text(localTime.format('dddd HH:mm'));
+
   if(diff < 0) {
+    var options = {
+        width: 854,
+        height: 480,
+        channel: 'hyperrpg',
+    };
+    var player = new Twitch.Player('player', options);
+    
     return;
   }
 
@@ -28,8 +39,10 @@ $(document).ready(function() {
 
   setInterval(function() {
     duration = moment.duration(duration - interval, 'milliseconds');
-    if(duration.days() > 0) {
-      $('#days').text(duration.days() + ' days');
+    if(duration.days() <= 0) {
+      $('#daysContainer').hide();
+    } else {
+      $('#days').text(duration.days());
     }
 
     var hours = padNumber('' + duration.hours());
