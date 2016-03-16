@@ -7,7 +7,7 @@ var http = require('https');
 var router = express.Router();
 
 function getTime(time) {
-  return moment(time, 'dddd HH:mm')
+  return moment(time, 'dddd HH:mm');
 }
 
 moment.tz.add('America/Los_Angeles|PST PDT|80 70|01010101010|1Lzm0 1zb0 Op0 1zb0 Rd0 1zb0 Op0 1zb0 Op0 1zb0');

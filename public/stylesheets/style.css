@@ -6,8 +6,22 @@ body {
   color: #ff34ff;
 }
 
-h1, h2 {
+ul.share-buttons{
   text-align: center;
+  list-style: none;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
+}
+
+.tiny {
+  text-align: center;
+  font-size: 3;
 }
 
 div.counter {
