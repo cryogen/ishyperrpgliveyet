@@ -34,10 +34,12 @@ function getDuration(timeOfShow, timeOfNow) {
 $(document).ready(function() {
   var timeOfShow = moment(showTime, 'dddd HH:mm:ss');
   var timeOfNow = moment(currentTime, 'dddd HH:mm:ss z');
+  var timeReached = false;
 
   var diff = timeOfShow - timeOfNow;
   if(diff < 0) {
     diff = -diff;
+    timeReached = true;
   }
 
   var duration = getDuration(timeOfShow, timeOfNow);
@@ -53,7 +55,7 @@ $(document).ready(function() {
 
   $('#localTime').text(localTime.format('dddd HH:mm'));
 
-  if(diff < 0) {
+  if(duration < 0) {
     var options = {
       width: 854,
       height: 480,
