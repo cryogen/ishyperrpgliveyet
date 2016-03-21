@@ -1,9 +1,13 @@
 'use strict';
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+(function(i,s,o,g,r,a,m) {
+  i['GoogleAnalyticsObject']=r;
+  i[r]=i[r] || function() {
+    (i[r].q=i[r].q || []).push(arguments)
+  }, i[r].l = 1 * new Date();
+  a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-75043688-1', 'auto');
 ga('send', 'pageview');
@@ -16,11 +20,7 @@ function padNumber(number) {
   return number;
 }
 
-$(document).ready(function() {
-  var timeOfShow = moment(showTime, 'dddd HH:mm:ss');
-  var timeOfNow = moment(currentTime, 'dddd HH:mm:ss z');
-
-  var diff = timeOfShow - timeOfNow;
+function getDuration(timeOfShow, timeOfNow) {
   var duration = moment.duration(timeOfShow.diff(timeOfNow));
 
   if(duration.days() < 0) {
@@ -28,7 +28,24 @@ $(document).ready(function() {
     duration = moment.duration(timeOfShow.add(1, 'week').diff(timeOfNow));
   }
 
+  return duration;
+}
+
+$(document).ready(function() {
+  var timeOfShow = moment(showTime, 'dddd HH:mm:ss');
+  var timeOfNow = moment(currentTime, 'dddd HH:mm:ss z');
+
+  var diff = timeOfShow - timeOfNow;
+  if(diff < 0) {
+    diff = -diff;
+  }
+
+  var duration = getDuration(timeOfShow, timeOfNow);
+
   var localTime = moment().add(duration);
+  var localNow = moment();
+
+  duration = getDuration(localTime, localNow);
 
   if(localTime.minutes() !== 0) {
     localTime.add(1, 'minute');
@@ -38,9 +55,9 @@ $(document).ready(function() {
 
   if(diff < 0) {
     var options = {
-        width: 854,
-        height: 480,
-        channel: 'hyperrpg',
+      width: 854,
+      height: 480,
+      channel: 'hyperrpg',
     };
     var player = new Twitch.Player('player', options);
 
@@ -50,7 +67,8 @@ $(document).ready(function() {
   var interval = 1000;
 
   setInterval(function() {
-    duration = moment.duration(duration - interval, 'milliseconds');
+    duration = getDuration(localTime, moment());
+    console.info(duration);
     if(duration.days() <= 0) {
       $('#daysContainer').hide();
     } else {
@@ -66,6 +84,7 @@ $(document).ready(function() {
     $('#seconds').text(seconds);
 
     if(hours <= 0 && minutes <= 0 && seconds <= 0) {
+      clearInterval();
       location.href = '/';
     }
   }, interval);
