@@ -31,7 +31,8 @@ var shows = [
   { name: 'Grab Bag', time: getTime('Thursday 18:00') },
   { name: 'Rabbit Stew', time: getTime('Friday 13:00') },
   { name: 'Weekly Affirmations', time: getTime('Friday 15:00') },
-  { name: 'Death From Above', time: getTime('Friday 18:00') }
+  { name: 'Death From Above', time: getTime('Friday 18:00') },
+  { name: 'Starr Mazer TV', time: getTime('Saturday 15:00') }
 ];
 
 function isAfter(first, second) {
@@ -55,7 +56,7 @@ function findShow() {
       return { live: false, show: currentShow };
     }
 
-    if(currentTime.isAfter(currentShow.time) && currentTime.isBefore(nextShow.time)) {
+    if(!nextShow || (currentTime.isAfter(currentShow.time) && currentTime.isBefore(nextShow.time))) {
       return { live: true, show: currentShow };
     }
 
