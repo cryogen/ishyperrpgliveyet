@@ -17,6 +17,7 @@ var shows = [
   { name: 'Rabbit Stew', time: getTime('Monday 13:00') },
   { name: 'WTF Is This?', time: getTime('Monday 15:00') },
   { name: 'Trvia Hops', time: getTime('Monday 19:00') },
+  { name: 'Starr Mazer TV', time: getTime('Tuesday 09:30') },
   { name: 'Rabbit Stew', time: getTime('Tuesday 13:00') },
   { name: 'Future/Retro', time: getTime('Tuesday 15:00') },
   { name: 'Colony News', time: getTime('Tuesday 17:30') },
