@@ -11,6 +11,7 @@ block content
     h1 Yes! :D (probably) #{name} is on! It started on #{getDateTimeString(startTime)} #{timeZone}.  Watch it below:
     #player
   else
+    img.overlay(src='/img/overlay.png')
     .topleft
       h2.answer No :( But, the next show is #{name}.  
       h3.showtime It starts on #{getDateTimeString(startTime)} #{timeZone}, or #[span(id='localTime')] local time
