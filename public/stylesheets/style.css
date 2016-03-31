@@ -26,9 +26,10 @@ body {
 
 h2.counter {
   position: absolute;
-  right: 5.6vw;
-  bottom: 4.5vh;
+  right: 7.5vw;
+  bottom: 4.9vh;
   color: #ff34ff;
+  font-size: 1vw;
 }
 
 ul.share-buttons{

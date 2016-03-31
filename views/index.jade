@@ -13,7 +13,7 @@ block content
     #player
   else
     .topleft
-      h2.answer No :( But don't worry, the next show is #{name}.  
+      h2.answer No :( But, the next show is #{name}.  
       h3.showtime It starts on #{getDateTimeString(startTime)} #{timeZone}, or #[span(id='localTime')] local time
       h2.counter #[div(id='daysContainer' class='counter') #[span(id='days')] #[span(class='counterLabel') d]]
         | #[div(class='counter') #[span(id='hours')] #[span(class='counterLabel') hr]]
