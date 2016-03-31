@@ -14,26 +14,28 @@ moment.tz.add('America/Los_Angeles|PST PDT|80 70|01010101010|1Lzm0 1zb0 Op0 1zb0
 moment.tz.link('America/Los_Angeles|US/Pacific');
 
 var shows = [
-  { name: 'Rabbit Stew', time: getTime('Monday 13:00') },
-  { name: 'WTF Is This?', time: getTime('Monday 15:00') },
-  { name: 'Trvia Hops', time: getTime('Monday 19:00') },
-  { name: 'Starr Mazer TV', time: getTime('Tuesday 09:30') },
-  { name: 'Rabbit Stew', time: getTime('Tuesday 13:00') },
-  { name: 'Future/Retro', time: getTime('Tuesday 15:00') },
-  { name: 'Colony News', time: getTime('Tuesday 17:30') },
-  { name: 'Death From Above', time: getTime('Tuesday 18:00') },
-  { name: 'Easter Eggs', time: getTime('Wednesday 12:00') },
-  { name: 'Rabbit Stew', time: getTime('Wednesday 13:00') },
-  { name: 'Watching Paint Dry', time: getTime('Wednesday 15:00') },
-  { name: 'Corporate News', time: getTime('Wednesday 17:30') },
-  { name: 'Shadowrun Corporate Sins', time: getTime('Wednesday 18:00') },
-  { name: 'Rabbit Stew', time: getTime('Thursday 13:00') },
-  { name: 'Too Many Guilds', time: getTime('Thursday 15:00') },
-  { name: 'Grab Bag', time: getTime('Thursday 18:00') },
-  { name: 'Rabbit Stew', time: getTime('Friday 13:00') },
-  { name: 'Weekly Affirmations', time: getTime('Friday 15:00') },
+  { name: 'Full Tilt', time: getTime('Monday 10:00'), length: 3 },
+  { name: 'Rabbit Stew', time: getTime('Monday 13:00'), length: 2 },
+  { name: 'WTF Is This?', time: getTime('Monday 15:00'), length: 3 },
+  { name: 'Trvia Hops', time: getTime('Monday 19:00'), length: 3 },
+  { name: 'Starr Mazer TV: Your Mazer', time: getTime('Tuesday 09:30'), length: 3.5 },
+  { name: 'Rabbit Stew', time: getTime('Tuesday 13:00'), length: 2 },
+  { name: 'Future/Retro', time: getTime('Tuesday 15:00'), length: 2.5 },
+  { name: 'Colony News', time: getTime('Tuesday 17:30'), length: 0.5 },
+  { name: 'Death From Above', time: getTime('Tuesday 18:00'), length: 4 },
+  { name: 'Easter Eggs', time: getTime('Wednesday 12:00'), length: 1 },
+  { name: 'Rabbit Stew', time: getTime('Wednesday 13:00'), length: 2 },
+  { name: 'Watching Paint Dry', time: getTime('Wednesday 15:00'), length: 2.5 },
+  { name: 'Corporate News', time: getTime('Wednesday 17:30'), length: 0.5 },
+  { name: 'Shadowrun Corporate Sins', time: getTime('Wednesday 18:00'), length: 4 },
+  { name: 'Full Tilt', time: getTime('Thursday 1:00'), length: 3 },
+  { name: 'Rabbit Stew', time: getTime('Thursday 13:00'), length: 2},
+  { name: 'Too Many Guilds', time: getTime('Thursday 15:00'), length: 3 },
+  { name: 'Grab Bag', time: getTime('Thursday 18:00'), length: 3 },
+  { name: 'Rabbit Stew', time: getTime('Friday 13:00'), length: 2 },
+  { name: 'Weekly Affirmations', time: getTime('Friday 15:00'), length: 3 },
   { name: 'Death From Above', time: getTime('Friday 18:00') },
-  { name: 'Starr Mazer TV', time: getTime('Saturday 15:00') }
+  { name: 'Starr Mazer TV: Starr Mazer Plays', time: getTime('Saturday 15:00'), length: 4 }
 ];
 
 function isAfter(first, second) {
@@ -49,15 +51,21 @@ function findShow() {
     var currentShow = shows[i];
     var nextShow = i < shows.length - 1 ? shows[i + 1] : undefined;
 
+    // This show is not today, it's not this one
     if(!currentTime.isSame(currentShow.time, 'day')) {
       continue;
     }
 
+    // There is a show yet, but it's not started
     if(currentTime.isBefore(currentShow.time)) {
       return { live: false, show: currentShow };
     }
 
     if(!nextShow || (currentTime.isAfter(currentShow.time) && currentTime.isBefore(nextShow.time))) {
+      if(currentTime.isAfter(currentShow.time.clone().add(currentShow.length, 'hours'))) {
+        return { live: false, show: nextShow };
+      }
+
       return { live: true, show: currentShow };
     }
 
