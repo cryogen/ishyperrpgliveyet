@@ -17,6 +17,11 @@ img.bg {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
+a:link, a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 body {
   background-color: black;
   color: white;
@@ -35,10 +40,21 @@ h2.counter {
 ul.share-buttons{
   text-align: center;
   list-style: none;
+  margin-right: 5vw;
 }
 
-ul.share-buttons li{
+img.social-button {
+  vertical-align: middle;
+}
+
+ul.share-buttons li {
   display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+span.social-button {
+  margin-left: 5px;
 }
 
 h2 {
@@ -58,12 +74,21 @@ h3 {
   width: 42vw;
 }
 
+.bottomleft {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  height: 2.3vh;
+  width: 70vw;
+  margin-left: 5px;
+}
+
 .bottomright {
   position: fixed;
   bottom: 0px;
   right: 0px;
-  height: 5vh;
-  width: 38vw;
+  height: 6vh;
+  width: 39vw;
 }
 
 .tiny {

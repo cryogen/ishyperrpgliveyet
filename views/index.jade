@@ -20,30 +20,31 @@ block content
         | #[div(class='counter') #[span(id='minutes')] #[span(class='counterLabel') min]]
         | #[div(class='counter') #[span(id='seconds')] #[span(class='counterLabel') sec]]
       img.bg(src='/img/hypnologo_base.gif')
-  //  
-    li
-      a(href='https://www.facebook.com/HyperRPG' title="Facebook" target="_blank")
-        img(src='img/facebook.png')
-    li
-      a(href='https://twitter.com/Hyper_RPG' target='_blank' title='Twitter')
-        img(src='img/twitter.png')
-    li
-      a(href='http://www.reddit.com/r/HyperRPG' target='_blank' title='Reddi')
-        img(src='img/reddit.png')
-    li
-      a(href='http://twitch.tv/hyperrpg' target='_blank' title='Twitch')
-        img(src='img/twitch.png' height='32' width='32')
-        
   .bottomright
-    p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions
-    p.tiny hit the email button, or find me on twitter
-  //    
     ul.share-buttons
-    li
-      a(href='https://twitter.com/cryogen' target='_blank' title='My Twitter')
-        img(src='img/twitter.png')
-      a(href='mailto:stu+probablyspam@ipng.org.uk' title='Contact the site owner')
-        img(src='img/email.png')
+      li
+        a(href='https://www.facebook.com/HyperRPG' title="Facebook" target="_blank")
+          img.social-button(src='img/facebook.png')
+          span.social-button
+          |  HyperRPG
+      li
+        a(href='https://twitter.com/Hyper_RPG' target='_blank' title='Twitter')
+          img.social-button(src='img/twitter.png')
+          span.social-button
+          | @Hyper_HPG
+      li
+        a(href='http://www.reddit.com/r/HyperRPG' target='_blank' title='Reddi')
+          img.social-button(src='img/reddit.png')
+          span.social-button
+          | /r/HyperRPG
+      li
+        a(href='http://twitch.tv/hyperrpg' target='_blank' title='Twitch')
+          img.social-button(src='img/twitch.png' height='32' width='32')
+          span.social-button
+          | HyperRPG
+        
+  .bottomleft
+    p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions find me on twitter
   
   script.
     var showTime = '#{startTime}';
