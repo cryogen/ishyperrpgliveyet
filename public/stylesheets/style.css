@@ -1,6 +1,6 @@
 img.bg {
-  width: 92vw;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
 
   position: fixed;
   top: 0;
@@ -46,7 +46,7 @@ h3 {
   position: relative;
   margin-left: 2.5vw;
   height: 10vh;
-  width: 40vw;
+  width: 42vw;
 }
 
 .bottomright {
@@ -54,7 +54,7 @@ h3 {
   bottom: 0px;
   right: 0px;
   height: 5vh;
-  width: 44vw;
+  width: 38vw;
 }
 
 .tiny {

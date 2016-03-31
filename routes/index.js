@@ -28,7 +28,7 @@ var shows = [
   { name: 'Watching Paint Dry', time: getTime('Wednesday 15:00'), length: 2.5 },
   { name: 'Corporate News', time: getTime('Wednesday 17:30'), length: 0.5 },
   { name: 'Shadowrun Corporate Sins', time: getTime('Wednesday 18:00'), length: 4 },
-  { name: 'Full Tilt', time: getTime('Thursday 10:00'), length: 3 },
+  //{ name: 'Full Tilt', time: getTime('Thursday 10:00'), length: 3 },
   { name: 'Rabbit Stew', time: getTime('Thursday 13:00'), length: 2},
   { name: 'Too Many Guilds', time: getTime('Thursday 15:00'), length: 3 },
   { name: 'Grab Bag', time: getTime('Thursday 18:00'), length: 3 },
