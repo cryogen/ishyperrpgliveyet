@@ -1,8 +1,25 @@
+img.bg {
+  width: 92vw;
+  height: auto;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: -1;
+}
+
 body {
   background-color: black;
-  padding: 50px;
+  color: white;
+  margin-top: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
+h2.counter {
+  position: absolute;
+  right: 5.6vw;
+  bottom: 4.5vh;
   color: #ff34ff;
 }
 
@@ -15,13 +32,34 @@ ul.share-buttons li{
   display: inline;
 }
 
-h1, h2, h3, h4 {
-  text-align: center;
+h2 {
+  font-size: 1.2vw;
+  margin: 0;
+}
+
+h3 {
+  font-size: 0.8vw;
+  margin: 0;
+}
+
+.topleft {
+  position: relative;
+  margin-left: 2.5vw;
+  height: 10vh;
+  width: 40vw;
+}
+
+.bottomright {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  height: 5vh;
+  width: 44vw;
 }
 
 .tiny {
-  text-align: center;
   font-size: 3;
+  margin: 0;
 }
 
 div.counter {
@@ -37,15 +75,6 @@ div#player {
 .counterLabel {
   display: block;
   padding: 0px 5px;
-}
-
-.background {
-  background-image: url(/img/hypnologo_base.gif);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100%;
-  min-height: 500px;
 }
 
 a {

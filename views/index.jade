@@ -12,16 +12,15 @@ block content
     h1 Yes! :D (probably) #{name} is on! It started on #{getDateTimeString(startTime)} #{timeZone}.  Watch it below:
     #player
   else
-    h1 No :(
-    h2 But don't worry, the next show is #{name}.  It starts on #{getDateTimeString(startTime)} #{timeZone}, which is #[span(id='localTime')] local time
-    h2 #[div(id='daysContainer' class='counter') #[span(id='days')] #[span(class='counterLabel') d]]
-      | #[div(class='counter') #[span(id='hours')] #[span(class='counterLabel') hr]]
-      | #[div(class='counter') #[span(id='minutes')] #[span(class='counterLabel') min]]
-      | #[div(class='counter') #[span(id='seconds')] #[span(class='counterLabel') sec]]
-    .background
-  
-  h3 Find Hyper RPG in all these lovely locations:
-  ul.share-buttons
+    .topleft
+      h2.answer No :( But don't worry, the next show is #{name}.  
+      h3.showtime It starts on #{getDateTimeString(startTime)} #{timeZone}, or #[span(id='localTime')] local time
+      h2.counter #[div(id='daysContainer' class='counter') #[span(id='days')] #[span(class='counterLabel') d]]
+        | #[div(class='counter') #[span(id='hours')] #[span(class='counterLabel') hr]]
+        | #[div(class='counter') #[span(id='minutes')] #[span(class='counterLabel') min]]
+        | #[div(class='counter') #[span(id='seconds')] #[span(class='counterLabel') sec]]
+      img.bg(src='/img/hypnologo_base.gif')
+  //  
     li
       a(href='https://www.facebook.com/HyperRPG' title="Facebook" target="_blank")
         img(src='img/facebook.png')
@@ -34,12 +33,12 @@ block content
     li
       a(href='http://twitch.tv/hyperrpg' target='_blank' title='Twitch')
         img(src='img/twitch.png' height='32' width='32')
-  
-  br
-  br
-  
-  p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions hit the email button, or find me on twitter
-  ul.share-buttons
+        
+  .bottomright
+    p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions
+    p.tiny hit the email button, or find me on twitter
+  //    
+    ul.share-buttons
     li
       a(href='https://twitter.com/cryogen' target='_blank' title='My Twitter')
         img(src='img/twitter.png')
