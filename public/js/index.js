@@ -70,7 +70,6 @@ $(document).ready(function() {
 
   setInterval(function() {
     duration = getDuration(localTime, moment());
-    console.info(duration);
     if(duration.days() <= 0) {
       $('#daysContainer').hide();
     } else {
