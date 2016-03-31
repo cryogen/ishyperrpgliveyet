@@ -8,8 +8,13 @@ block content
   -}
 
   if live
-    h1 Yes! :D (probably) #{name} is on! It started on #{getDateTimeString(startTime)} #{timeZone}.  Watch it below:
+    img.overlay(src='/img/overlay.png')
+    .topleft-live
+      h2.answer Yes! :D (probably) #{name} is on! 
+      h3.showtime It started on #{getDateTimeString(startTime)} #{timeZone}.  Watch it below:
     #player
+    .bottomleft-live
+      p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions find me on twitter
   else
     img.overlay(src='/img/overlay.png')
     .topleft
@@ -20,6 +25,8 @@ block content
         | #[div(class='counter') #[span(id='minutes')] #[span(class='counterLabel') min]]
         | #[div(class='counter') #[span(id='seconds')] #[span(class='counterLabel') sec]]
       img.bg(src='/img/hypnologo_base.gif')
+    .bottomleft
+      p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions find me on twitter
   .bottomright
     ul.share-buttons
       li
@@ -42,9 +49,6 @@ block content
           img.social-button(src='img/twitch.png' height='32' width='32')
           span.social-button
           | HyperRPG
-        
-  .bottomleft
-    p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions find me on twitter
   
   script.
     var showTime = '#{startTime}';

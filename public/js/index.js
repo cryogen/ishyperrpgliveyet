@@ -56,9 +56,14 @@ $(document).ready(function() {
   $('#localTime').text(localTime.format('dddd HH:mm'));
 
   if(duration < 0) {
+    var width = window.innerWidth && document.documentElement.clientWidth ?
+Math.min(window.innerWidth, document.documentElement.clientWidth) :
+window.innerWidth ||
+document.documentElement.clientWidth ||
+document.getElementsByTagName('body')[0].clientWidth;
     var options = {
-      width: 854,
-      height: 480,
+      width: width,
+      height: window.innerHeight - 10,
       channel: 'hyperrpg',
     };
     var player = new Twitch.Player('player', options);
