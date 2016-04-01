@@ -8,7 +8,8 @@ block content
   -}
 
   if live
-    img.overlay(src='/img/overlay.png')
+    #img_overlay
+     img.overlay(src='/img/overlay.png')
     .topleft-live
       h2.answer Yes! :D (probably) #{name} is on! 
       h3.showtime It started on #{getDateTimeString(startTime)} #{timeZone}.  Watch it below:
