@@ -9,17 +9,19 @@ img.bg {
   z-index: -10;
 }
 
+#img_overlay {
+    position: absolute;
+    z-index: -5;
+    pointer-events: none;
+	max-width: 1920px;
+	max-height: 1080px;
+	left: 0px;
+	
+}
+
 img.overlay {
-  width: 89.5vw;
-  height: 99vh;
-
-  position: fixed;
-  top: 0;
-  left: 5.25vw;
-
-  z-index: -5;
-
-  pointer-events: none
+    width: 100%;
+	height: 100%;
 }
 
 @font-face {
@@ -53,7 +55,7 @@ h2.counter {
 ul.share-buttons{
   text-align: center;
   list-style: none;
-  margin-right: 5vw;
+  margin-right: 1vw;
 }
 
 img.social-button {
@@ -88,7 +90,7 @@ h3 {
 }
 
 .topleft-live {
-  position: relative;
+  position: absolute;
   margin-left: 7.5vw;
   height: 10vh;
   width: 42vw;
@@ -104,20 +106,20 @@ h3 {
 }
 
 .bottomleft-live {
-  position: fixed;
-  bottom: 1.2vh;
+  position: absolute;
+  bottom: 0px;
   left: 0px;
-  height: 2.3vh;
   width: 70vw;
   margin-left: 6vw;
 }
 
 .bottomright {
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   right: 0px;
   height: 6vh;
-  width: 39vw;
+  width: 46vw;
+  pointer-events: all;
 }
 
 .tiny {

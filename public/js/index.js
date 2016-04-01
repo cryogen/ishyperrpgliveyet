@@ -67,7 +67,18 @@ document.getElementsByTagName('body')[0].clientWidth;
       channel: 'hyperrpg',
     };
     var player = new Twitch.Player('player', options);
+	
+	var newWidth = $('#player').width();
+	
+	$('#img_overlay').css('height', newWidth * 9/16);
+	
+	$('#img_overlay').css('width', newWidth);
+	
+	$('#img_overlay').css('top', ((window.innerHeight - 10) - (newWidth * 9/16))/2 + "px" );
 
+	$('.topleft-live').prependTo($('#img_overlay'));
+	$('.bottomright').appendTo($('#img_overlay'));
+	$('.bottomleft-live').appendTo($('#img_overlay'));
     return;
   }
 
