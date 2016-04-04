@@ -1,8 +1,8 @@
 img.bg {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 
@@ -22,6 +22,12 @@ img.bg {
 img.overlay {
     width: 100%;
 	height: 100%;
+}
+
+img.overlay-offline {
+    width: 100%;
+	height: 100%;
+	position: absolute;
 }
 
 @font-face {
@@ -45,9 +51,6 @@ body {
 }
 
 h2.counter {
-  position: absolute;
-  right: 7.5vw;
-  bottom: 4.9vh;
   color: #ff34ff;
   font-size: 1vw;
 }
@@ -97,10 +100,9 @@ h3 {
 }
 
 .bottomleft {
-  position: fixed;
-  bottom: 0px;
+  position: absolute;
+  bottom: .5vh;
   left: 0px;
-  height: 2.3vh;
   width: 70vw;
   margin-left: 5px;
 }
@@ -143,6 +145,12 @@ div#player {
 .counterLabel {
   display: block;
   padding: 0px 5px;
+}
+
+#countdown {
+  position: absolute;
+  right: 7.5vw;
+  top: .5vh;
 }
 
 a {

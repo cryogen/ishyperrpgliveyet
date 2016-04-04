@@ -77,11 +77,11 @@ document.getElementsByTagName('body')[0].clientWidth;
 	$('#img_overlay').css('top', ((window.innerHeight - 10) - (newWidth * 9/16))/2 + "px" );
 
 	$('.topleft-live').prependTo($('#img_overlay'));
-	$('.bottomright').appendTo($('#img_overlay'));
 	$('.bottomleft-live').appendTo($('#img_overlay'));
     return;
   }
-
+  $('.bottomright').appendTo($('#img_overlay'));
+  
   var interval = 1000;
 
   setInterval(function() {
