@@ -31,10 +31,24 @@ function getDuration(timeOfShow, timeOfNow) {
   return duration;
 }
 
+function adjustDivHeight() {
+  setTimeout(function() {
+    var width = $('#overlay-container').width();
+    var height = width * 9 / 16;
+
+    $('#overlay-container').height(height);
+  }, 300);
+}
+
 $(document).ready(function() {
   var timeOfShow = moment(showTime, 'dddd HH:mm:ss');
   var timeOfNow = moment(currentTime, 'dddd HH:mm:ss z');
   var timeReached = false;
+
+  adjustDivHeight();
+  $(window).resize(function() {
+    adjustDivHeight();
+  });
 
   var diff = timeOfShow - timeOfNow;
   if(diff < 0) {
@@ -66,22 +80,23 @@ document.getElementsByTagName('body')[0].clientWidth;
       height: window.innerHeight - 10,
       channel: 'hyperrpg',
     };
-    var player = new Twitch.Player('player', options);
-	
-	var newWidth = $('#player').width();
-	
-	$('#img_overlay').css('height', newWidth * 9/16);
-	
-	$('#img_overlay').css('width', newWidth);
-	
-	$('#img_overlay').css('top', ((window.innerHeight - 10) - (newWidth * 9/16))/2 + "px" );
 
-	$('.topleft-live').prependTo($('#img_overlay'));
-	$('.bottomleft-live').appendTo($('#img_overlay'));
+    var player = new Twitch.Player('player', options);
+
+    var newWidth = $('#player').width();
+
+    $('#img_overlay').css('height', newWidth * 9/16);
+
+    $('#img_overlay').css('width', newWidth);
+
+    $('#img_overlay').css('top', ((window.innerHeight - 10) - (newWidth * 9/16))/2 + 'px');
+
+    $('.topleft-live').prependTo($('#img_overlay'));
+    $('.bottomleft-live').appendTo($('#img_overlay'));
     return;
   }
   $('.bottomright').appendTo($('#img_overlay'));
-  
+
   var interval = 1000;
 
   setInterval(function() {

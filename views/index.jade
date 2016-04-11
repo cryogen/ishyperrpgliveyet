@@ -8,7 +8,7 @@ block content
   -}
 
   if live
-    #img_overlay
+    #overlay-container
      img.overlay(src='/img/overlay.png')
     .topleft-live
       h2.answer Yes! :D (probably) #{name} is on! 
@@ -17,42 +17,43 @@ block content
     .bottomleft-live
       p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions find me on twitter
   else
-    #img_overlay
-     img.overlay(src='/img/overlay.png')
-     img.bg(src='/img/hypnologo_base.gif')
-     .bottomleft
-      p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions find me on twitter
-    .topleft
-      h2.answer No :( But, the next show is #{name}.  
-      h3.showtime It starts on #{getDateTimeString(startTime)} #{timeZone}, or #[span(id='localTime')] local time
-      #countdown
-       h2.counter #[div(id='daysContainer' class='counter') #[span(id='days')] #[span(class='counterLabel') d]]
-         | #[div(class='counter') #[span(id='hours')] #[span(class='counterLabel') hr]]
-         | #[div(class='counter') #[span(id='minutes')] #[span(class='counterLabel') min]]
-         | #[div(class='counter') #[span(id='seconds')] #[span(class='counterLabel') sec]]
-    
-  .bottomright
-    ul.share-buttons
-      li
-        a(href='https://www.facebook.com/HyperRPG' title="Facebook" target="_blank")
-          img.social-button(src='img/facebook.png')
-          span.social-button
-          |  HyperRPG
-      li
-        a(href='https://twitter.com/Hyper_RPG' target='_blank' title='Twitter')
-          img.social-button(src='img/twitter.png')
-          span.social-button
-          | @Hyper_HPG
-      li
-        a(href='http://www.reddit.com/r/HyperRPG' target='_blank' title='Reddi')
-          img.social-button(src='img/reddit.png')
-          span.social-button
-          | /r/HyperRPG
-      li
-        a(href='http://twitch.tv/hyperrpg' target='_blank' title='Twitch')
-          img.social-button(src='img/twitch.png' height='32' width='32')
-          span.social-button
-          | HyperRPG
+    #overlay-container
+      img.overlay(src='/img/overlay.png')
+      img.bg(src='/img/hypnologo_base.gif')
+      .topleft
+        h2.answer No :( But, the next show is #{name}.  
+        h3.showtime It starts on #{getDateTimeString(startTime)} #{timeZone}, or #[span(id='localTime')] local time
+        #countdown
+         h2.counter #[div(id='daysContainer' class='counter') #[span(id='days')] #[span(class='counterLabel') d]]
+           | #[div(class='counter') #[span(id='hours')] #[span(class='counterLabel') hr]]
+           | #[div(class='counter') #[span(id='minutes')] #[span(class='counterLabel') min]]
+           | #[div(class='counter') #[span(id='seconds')] #[span(class='counterLabel') sec]]
+      .bottomleft
+        p.tiny This site is not owned, operated or endorsed by Hyper RPG.  Any comments/suggestions/questions, find #[a(href='https://twitter.com/cryogen/') me] on twitter
+
+      .bottomright
+        ul.share-buttons
+          li
+            a(href='https://www.facebook.com/HyperRPG' title="Facebook" target="_blank")
+              .button-container
+                img.social-button(src='img/facebook.png')
+                span.social-button
+                |  HyperRPG
+          li
+            a(href='https://twitter.com/Hyper_RPG' target='_blank' title='Twitter')
+              img.social-button(src='img/twitter.png')
+              span.social-button
+              | @Hyper_HPG
+          li
+            a(href='http://www.reddit.com/r/HyperRPG' target='_blank' title='Reddi')
+              img.social-button(src='img/reddit.png')
+              span.social-button
+              | /r/HyperRPG
+          li
+            a(href='http://twitch.tv/hyperrpg' target='_blank' title='Twitch')
+              img.social-button(src='img/twitch.png' height='32' width='32')
+              span.social-button
+              | HyperRPG
   
   script.
     var showTime = '#{startTime}';
