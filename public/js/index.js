@@ -70,16 +70,6 @@ $(document).ready(function() {
   $('#localTime').text(localTime.format('dddd HH:mm'));
 
   if(duration < 0) {
-    var width = $('#overlay-container').width();
-    var height = $('#overlay-container').height();
-    var options = {
-      width: width,
-      height: height,
-      channel: 'hyperrpg',
-    };
-
-    var player = new Twitch.Player('player', options);
-
     return;
   }
 
