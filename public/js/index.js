@@ -70,32 +70,18 @@ $(document).ready(function() {
   $('#localTime').text(localTime.format('dddd HH:mm'));
 
   if(duration < 0) {
-    var width = window.innerWidth && document.documentElement.clientWidth ?
-Math.min(window.innerWidth, document.documentElement.clientWidth) :
-window.innerWidth ||
-document.documentElement.clientWidth ||
-document.getElementsByTagName('body')[0].clientWidth;
+    var width = $('#overlay-container').width();
+    var height = $('#overlay-container').height();
     var options = {
       width: width,
-      height: window.innerHeight - 10,
+      height: height,
       channel: 'hyperrpg',
     };
 
     var player = new Twitch.Player('player', options);
 
-    var newWidth = $('#player').width();
-
-    $('#img_overlay').css('height', newWidth * 9/16);
-
-    $('#img_overlay').css('width', newWidth);
-
-    $('#img_overlay').css('top', ((window.innerHeight - 10) - (newWidth * 9/16))/2 + 'px');
-
-    $('.topleft-live').prependTo($('#img_overlay'));
-    $('.bottomleft-live').appendTo($('#img_overlay'));
     return;
   }
-  $('.bottomright').appendTo($('#img_overlay'));
 
   var interval = 1000;
 
