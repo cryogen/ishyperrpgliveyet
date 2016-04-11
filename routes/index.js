@@ -76,6 +76,29 @@ function findShow() {
   return { live: false, show: shows[0] };
 }
 
+router.get('/api/nextshow', function(req, res, next) {
+  var time = moment().tz('America/Los_Angeles');
+  var trimmedTime = moment(time.format('dddd HH:mm:ss z'), 'dddd HH:mm:ss z');
+
+  var show = findShow(time);
+
+  if(show.live) {
+    res.send(show.show.name + ' is live now!');
+    return;
+  }
+
+  var difference = moment.duration(show.show.time.diff(trimmedTime));
+
+  var hours = difference.hours();
+  if(hours > 0) {
+    hours += difference.days() * 24;
+  }
+
+  res.send(show.show.name + ' will take off in T minus ' + hours +
+    ' hours, ' + difference.minutes() + ' minutes, ' +
+    difference.seconds() + ' seconds ' + 'http://ishyperrpgliveyet.com');
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var momentTime = moment();
@@ -86,7 +109,7 @@ router.get('/', function(req, res, next) {
 
   var data = '';
 
-  http.get('https://api.twitch.tv/kraken/streams/hyperrpg', function(res) {
+/*  http.get('https://api.twitch.tv/kraken/streams/hyperrpg', function(res) {
     res.on('data', function(chunk) {
       data += chunk;
     });
@@ -94,7 +117,7 @@ router.get('/', function(req, res, next) {
     res.on('end', function() {
 //      console.info(data);
     });
-  });
+  });*/
 
   res.render('index', {
     title: 'Is HyperRPG Live Yet?',
