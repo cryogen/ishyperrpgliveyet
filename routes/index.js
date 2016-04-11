@@ -90,7 +90,7 @@ router.get('/api/nextshow', function(req, res, next) {
   var difference = moment.duration(show.show.time.diff(trimmedTime));
 
   var hours = difference.hours();
-  if(hours > 0) {
+  if(difference.days() > 0) {
     hours += difference.days() * 24;
   }
 
