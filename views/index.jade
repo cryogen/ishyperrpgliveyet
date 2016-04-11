@@ -16,7 +16,7 @@ mixin live
     h2.answer Yes! :D (probably) #{name} is on! 
     h3.showtime It started on #{getDateTimeString(startTime)} #{timeZone}.  Watch it below:
   #player
-    iframe.player(src='http://player.twitch.tv/?channel=hyperrpg&quality="chunked"')
+    iframe.player(src='http://player.twitch.tv/?channel=hyperrpg&quality="chunked"&html5')
          
 block content
   -var getDateTimeString = function(dateString) {
